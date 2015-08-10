@@ -118,7 +118,7 @@ func getAuthHeader(oauthParams map[string]string) string {
 	pairs := make([]string, len(params))
 	i := 0
 	for key, value := range params {
-		pairs[i] = fmt.Sprintf("%s=%s", key, value)
+		pairs[i] = fmt.Sprintf("%s=\"%s\"", key, value)
 		i++
 	}
 	return authorizationPrefix + strings.Join(pairs, ", ")
