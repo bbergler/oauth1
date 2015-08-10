@@ -200,7 +200,7 @@ func signature(consumerSecret, tokenSecret, message string) string {
 
 // Returns a base64 encoded random 32 bytes.
 func nonce() string {
-	b := make([]byte, 32)
+	b := make([]byte, 24)
 	rand.Read(b)
 	return base64.StdEncoding.EncodeToString(b)
 }
