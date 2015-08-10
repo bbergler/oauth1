@@ -191,7 +191,7 @@ func encodeParams(unencodedParams map[string]string) string {
 // calculates the HMAC signature bytes of the message using the SHA1 hash.
 // Returns the base64 encoded signature.
 func signature(consumerSecret, tokenSecret, message string) string {
-	signingKey := strings.Join([]string{consumerSecret, tokenSecret}, "&")
+	signingKey := strings.Join([]string{PercentEncode(consumerSecret),PercentEncode(tokenSecret)}, "&")
 	mac := hmac.New(sha1.New, []byte(signingKey))
 	mac.Write([]byte(message))
 	signatureBytes := mac.Sum(nil)
